@@ -27,5 +27,5 @@ Add the dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_app_update_flutter: ^1.0.8
+  smart_app_update_flutter: ^1.0.9
 

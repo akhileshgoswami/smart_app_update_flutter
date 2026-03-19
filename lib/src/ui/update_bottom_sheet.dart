@@ -5,8 +5,6 @@ import 'package:smart_app_update_flutter/smart_app_update_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../models/custom_update_version.dart';
-
 class UpdateBottomSheet {
   static RxBool isUpdateDialogShowing = false.obs;
 
