@@ -17,7 +17,8 @@ class AppUpdateManager {
       String? notes,
       int? repeat_totalminutes = 60,
       bool forceUpdate = false,
-      bool testDebuge = false}) async {
+      bool testDebuge = false,
+      bool isAndroidTV = false}) async {
     if (testDebuge) {
       if (kDebugMode) {
         UpdateBottomSheet.testdialog();
@@ -45,7 +46,7 @@ class AppUpdateManager {
 
       // Otherwise fetch from platform store
       if (Platform.isAndroid) {
-        data = await _fetchFromPlayStore(info.packageName);
+        data = await _fetchFromPlayStore(info.packageName, isTV: isAndroidTV);
       } else if (Platform.isIOS) {
         data = await _fetchFromAppStore(info.packageName);
       }
@@ -78,6 +79,7 @@ class AppUpdateManager {
       forceUpdate,
       notes: notes,
       totalMinutes: repeat_totalminutes,
+      isAndroidTV: isAndroidTV,
     );
   }
 
@@ -106,8 +108,8 @@ class AppUpdateManager {
   }
 
   /// Fetches the latest version from the Google Play Store (best-effort scraping).
-  static Future<CustomUpdateVersion?> _fetchFromPlayStore(
-      String packageName) async {
+  static Future<CustomUpdateVersion?> _fetchFromPlayStore(String packageName,
+      {bool isTV = false}) async {
     try {
       final uri = Uri.parse(
           'https://play.google.com/store/apps/details?id=$packageName&hl=en&gl=US');
@@ -126,10 +128,14 @@ class AppUpdateManager {
         return null;
       }
 
+      // On Android TV use market:// scheme so the TV Play Store app opens directly
+      final redirectLink = isTV
+          ? 'market://details?id=$packageName'
+          : 'https://play.google.com/store/apps/details?id=$packageName';
+
       return CustomUpdateVersion(
         newVersion: found,
-        redirectLink:
-            'https://play.google.com/store/apps/details?id=$packageName',
+        redirectLink: redirectLink,
       );
     } catch (e) {
       return null;
