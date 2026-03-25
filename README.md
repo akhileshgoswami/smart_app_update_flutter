@@ -14,7 +14,7 @@ A lightweight Flutter package to automatically check for app updates from **Goog
 
 | Mobile Bottom Sheet | Android TV Dialog |
 |---|---|
-| ![Mobile Update Dialog](https://github.com/akhileshgoswami/smart_app_update/raw/main/example/lib/assets/screenshots/Screenshot_1756387828.png) | ![TV Update Dialog](https://github.com/akhileshgoswami/smart_app_update/raw/main/example/lib/assets/screenshots/Screenshot_1756387828.png) |
+| ![Mobile Update Dialog](https://github.com/akhileshgoswami/smart_app_update/raw/main/example/lib/assets/screenshots/Screenshot_1756387828.png) | ![TV Update Dialog](https://github.com/akhileshgoswami/smart_app_update/raw/main/example/lib/assets/screenshots/tv_app.png) |
 
 ---
 
@@ -37,7 +37,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_app_update_flutter: ^1.1.0
+  smart_app_update_flutter: ^1.1.1
 ```
 
 Then run:

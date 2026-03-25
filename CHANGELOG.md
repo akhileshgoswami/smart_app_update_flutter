@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.1.1
 
 - Improved README with full documentation, parameter table, and platform setup guide
 - Android TV support: D-pad navigable `AlertDialog` via `isAndroidTV: true`
